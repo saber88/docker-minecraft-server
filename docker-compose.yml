@@ -1,14 +1,81 @@
-services:
-  mc:
-    image: itzg/minecraft-server
+ services:
+  ic2:
+    image: itzg/minecraft-server:java8
+    container_name: ic2
     environment:
-      EULA: "true"
+      EULA: true
+      ONLINE_MODE: false
+      MEMORY: ${IC2_MEMORY}
+      ENABLE_AUTOPAUSE: true
+      VERSION: 1.12.2
+      TYPE: forge
+      MODRINTH_PROJECTS: |
+        industrial-craft:k2tOj88k
+        jei:MO021mIp
     ports:
-      - "25565:25565"
+      - ${IC2_PORT}:25565
     volumes:
-      - data:/data
+      - ./minecraft-data/ic2:/data
     stdin_open: true
     tty: true
     restart: unless-stopped
-volumes:
-  data: {}
+    
+  ada:
+    image: itzg/minecraft-server:java17-alpine
+    container_name: ada
+    environment:
+      EULA: true
+      ONLINE_MODE: false
+      MEMORY: ${ADA_MEMORY}
+      ENABLE_AUTOPAUSE: true
+      VERSION: 1.20.1
+      TYPE: forge
+      CF_API_KEY: ${CF_API_KEY}
+      CURSEFORGE_FILES: |
+        ad-astra
+        create
+        resourceful-config
+        resourceful-lib
+        botarium
+        worldedit
+        jei
+        novalogin
+    ports:
+      - ${ADA_PORT}:25565
+    volumes:
+      - ./minecraft-data/ada:/data
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+
+  pr:
+    image: itzg/minecraft-server:java17-alpine
+    container_name: pr
+    environment:
+      EULA: true
+      ONLINE_MODE: false
+      MEMORY: ${PR_MEMORY}
+      ENABLE_AUTOPAUSE: true
+      VERSION: 1.20.1
+      TYPE: forge
+      CF_API_KEY: ${CF_API_KEY}
+      CURSEFORGE_FILES: |
+        project-red-core
+        project-red-expansion
+        project-red-exploration
+        project-red-illumination
+        project-red-integration
+        project-red-transmission
+        project-red-fabrication
+        codechicken-lib-1-8
+        cb-multipart
+        worldedit
+        jei
+        novalogin
+    ports:
+      - ${PR_PORT}:25565
+    volumes:
+      - ./minecraft-data/pr:/data
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
