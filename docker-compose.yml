@@ -5,13 +5,18 @@
     environment:
       EULA: true
       ONLINE_MODE: false
-      MEMORY: ${IC2_MEMORY}
+      MEMORY: ""
+      JVM_XX_OPTS: -XX:MaxRAMPercentage=75
       ENABLE_AUTOPAUSE: true
       VERSION: 1.12.2
       TYPE: forge
       MODRINTH_PROJECTS: |
         industrial-craft:k2tOj88k
         jei:MO021mIp
+    deploy:
+      resources:
+        limits:
+          memory: ${IC2_MEMORY}
     ports:
       - ${IC2_PORT}:25565
     volumes:
@@ -26,7 +31,8 @@
     environment:
       EULA: true
       ONLINE_MODE: false
-      MEMORY: ${ADA_MEMORY}
+      MEMORY: ""
+      JVM_XX_OPTS: -XX:MaxRAMPercentage=75
       ENABLE_AUTOPAUSE: true
       VERSION: 1.20.1
       TYPE: forge
@@ -40,6 +46,10 @@
         worldedit
         jei
         novalogin
+    deploy:
+      resources:
+        limits:
+          memory: ${ADA_MEMORY}
     ports:
       - ${ADA_PORT}:25565
     volumes:
@@ -54,10 +64,12 @@
     environment:
       EULA: true
       ONLINE_MODE: false
-      MEMORY: ${PR_MEMORY}
+      MEMORY: ""
+      JVM_XX_OPTS: -XX:MaxRAMPercentage=75
       ENABLE_AUTOPAUSE: true
       VERSION: 1.20.1
       TYPE: forge
+      MODE: adventure
       CF_API_KEY: ${CF_API_KEY}
       CURSEFORGE_FILES: |
         project-red-core
@@ -72,6 +84,10 @@
         worldedit
         jei
         novalogin
+    deploy:
+      resources:
+        limits:
+          memory: ${PR_MEMORY}
     ports:
       - ${PR_PORT}:25565
     volumes:
