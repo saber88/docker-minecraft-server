@@ -6,7 +6,7 @@
       EULA: true
       ONLINE_MODE: false
       MEMORY: ""
-      JVM_XX_OPTS: -XX:MaxRAMPercentage=75
+      JVM_XX_OPTS: -XX:MaxRAMPercentage=75.0
       ENABLE_AUTOPAUSE: true
       VERSION: 1.12.2
       TYPE: forge
