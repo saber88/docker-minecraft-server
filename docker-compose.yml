@@ -1,4 +1,4 @@
- services:
+services:
   ic2:
     image: itzg/minecraft-server:java8
     container_name: ic2
